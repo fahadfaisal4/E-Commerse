@@ -1,0 +1,81 @@
+<section>
+    <div class="container">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"
+            id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+
+        <form class="form-horizontal" action="/admin/edit-product?id={{this.product._id}}" method="post"
+            enctype="multipart/form-data">
+            <fieldset>
+                <!-- Form Name -->
+                <h2 class="text-center">Edit {{this.product.name}} </h2>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>
+                    <div class="col-md-4">
+                        <input id="product_name" name="name" placeholder="PRODUCT NAME" class="form-control input-md"
+                            required="" type="text" value="{{this.product.name}}">
+                    </div>
+                </div>
+
+                <!-- Select Basic -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_categorie">PRODUCT CATEGORY</label>
+                    <div class="col-md-4">
+                        <select name="category">
+                            <option value="Electronics">Electronics</option>
+                            <option value="Phones">Phones</option>
+                            <option value="Edible">Edibles</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_price">PRODUCT PRICE</label>
+                    <div class="col-md-4">
+                        <input id="product_price" name="price" placeholder="PRODUCT PRICE" class="form-control input-md"
+                            type="number" value="{{this.product.price}}">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_description">PRODUCT DESCRIPTION</label>
+                    <div class="col-md-4">
+                        <textarea class="form-control" id="product_description" name="description"
+                            value="{{this.product.description}}"> </textarea>
+                    </div>
+                </div>
+
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="filebutton">Product_Image</label>
+                        <div class="col-md-4">
+                            <input id="filebutton" name="image" class="input-file" type="file" onchange="showImg(event)">
+                            <img style="height: 11rem;
+                            width: 8rem;" src="/images/product-images/{{this.product._id}}.jpg" id="prod_img" alt=""
+                                >
+                        </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="singlebutton">Edit Product</label>
+                        <div class="col-md-4">
+                            <button id="singlebutton" class="btn btn-success">Edit</button>
+                        </div>
+                    </div>
+                    <script>
+
+                        function showImg(event) {
+                            document.getElementById("prod_img").src = URL.createObjectURL(event.target.files[0])
+            
+                        }
+                    </script>
+            </fieldset>
+        </form>
+    </div>
+
+</section>
